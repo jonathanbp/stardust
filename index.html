@@ -1,272 +1,285 @@
 <!DOCTYPE html>
 <html>
-  <head>
-<meta charset="utf-8">
 
-<style>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      position: absolute;;
+      top: 0px;
+      bottom: 0px;
+      left: 0px;
+      right: 0px;
+    }
 
-body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  margin: auto;
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
+    path {
+      stroke: #fff;
+      fill-rule: evenodd;
+    }
 
-path {
-  stroke: #fff;
-  fill-rule: evenodd;
-}
+    form {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+    }
 
-form {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-}
+    .details {
+      font-size: .7em;
+    }
+  </style>
+</head>
 
-.details {
-  font-size: .7em;
-}
+<body>
+  <div class="droptarget" style="position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px;">
+    <div style="display:flex;justify-content:center;align-items:center;width:100%;height:100%;">
+      <div style="width:100px;height:100px;font-size:7em;">🕳</div>
+    </div>
+  </div>
 
-</style>
-  </head>
-  <body>
-    hello
-  </body>
+</body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.1.6/zepto.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/q.js/1.4.1/q.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="//d3js.org/d3.v3.min.js"></script>
-
 <script type="text/javascript" charset="utf-8">
+  var tree;
 
-var tree = {
-  converted: true,
-  name: 'root',
-  hits: 1,
-  totalms: 0,
-  avg: 0,
-  children: []
-}
-
-function updateTree(trace) {
-  var currentBranch = tree;
-  var invoke;
-  while(invoke = trace.pop()) {
-    var node = currentBranch.children.find(function(n) { return n.name == invoke; });
-    if(node) {
-      node.hits++; 
-    } else {
-      node = {
-        name: invoke,
-        hits: 1,
-        children: []
-      };
-      currentBranch.children.push(node);
+  function updateTree(trace) {
+    var currentBranch = tree;
+    var invoke;
+    while (invoke = trace.pop()) {
+      var node = currentBranch.children.find(function(n) {
+        return n.name == invoke;
+      });
+      if (node) {
+        node.hits++;
+      } else {
+        node = {
+          name: invoke,
+          hits: 1,
+          children: []
+        };
+        currentBranch.children.push(node);
+      }
+      currentBranch = node;
     }
-    currentBranch = node;
-  }
-}
-
-function fileSelectHandler(e) {
-  // cancel event default
-  e.preventDefault();
-
-  // fetch FileList object
-  var files = e.target.files || e.dataTransfer.files;
-
-  var promises = [];
-
-  // process all File objects
-  for(var i=0; i<files.length; i++) {
-
-    (function(i) {
-    var deferred = Q.defer();
-    promises.push(deferred.promise);
-  
-    var file = files.item(i);
-
-    var parser = { trace: [] };
-    
-    if (file.type.indexOf("text") == 0 || file.type == "") {
-      var reader = new FileReader();
-      reader.onload = function(e) {
-		    // get file content
-		    var text = e.target.result;
-        text.split(/\r\n|\r|\n/g).forEach(function(line) {
-          if (/^\s+at.*/.test(line)) {
-            parser.trace.push(/^\s+at\s([^(]+).*/.exec(line)[1]);
-          } else if(line.trim() == "") {
-            updateTree(parser.trace);
-            return;
-            // reset parser
-            parser.trace = [];
-          }
-        });
-        deferred.resolve();
-      };
-      reader.readAsText(file);
-    }
-    })(i);
   }
 
-  Q.allSettled(promises).then(function() { init(tree); });
-}
+  function fileSelectHandler(e) {
+    // cancel event default
+    e.preventDefault();
 
-$(function() { 
-  document.querySelector("body").addEventListener("drop", fileSelectHandler);
-  document.querySelector("body").addEventListener("dragover", function(e) { e.preventDefault();  });
-  document.querySelector("body").addEventListener("dragleave", function(e) { e.preventDefault();  });
-});
+    tree = {
+      converted: true,
+      name: 'root',
+      hits: 1,
+      children: []
+    };
+
+    // fetch FileList object
+    var files = e.target.files || e.dataTransfer.files;
+
+    var promises = [];
+
+    // process all File objects
+    for (var i = 0; i < files.length; i++) {
+
+      (function(i) {
+        var deferred = Q.defer();
+        promises.push(deferred.promise);
+
+        var file = files.item(i);
+
+        var parser = {
+          trace: []
+        };
+
+        if (file.type.indexOf("text") == 0 || file.type == "") {
+          var reader = new FileReader();
+          reader.onload = function(e) {
+            // get file content
+            var text = e.target.result;
+            text.split(/\r\n|\r|\n/g).forEach(function(line) {
+              if (/^\s+at.*/.test(line)) {
+                parser.trace.push(/^\s+at\s([^(]+).*/.exec(line)[1]);
+              } else if (line.trim() == "") {
+                updateTree(parser.trace);
+                return;
+                // reset parser
+                parser.trace = [];
+              }
+            });
+            deferred.resolve();
+          };
+          reader.readAsText(file);
+        }
+      })(i);
+    }
+
+    Q.allSettled(promises).then(function() {
+      render(tree);
+    });
+  }
+
+  $(function() {
+    document.querySelector("body").addEventListener("drop", fileSelectHandler);
+    document.querySelector("body").addEventListener("dragover", function(e) {
+      e.preventDefault();
+    });
+    document.querySelector("body").addEventListener("dragleave", function(e) {
+      e.preventDefault();
+    });
+  });
 </script>
 
 <script>
+  function render(d) {
 
+    // do a rather bruteforce cleanup
+    $("body svg").remove();
+    $("body div.tooltip").remove();
+    $(".droptarget").remove();
 
-function init(d) {
+    var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 
+    var height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
 
-  $("body svg").remove();
+    height = 1024;
+    width = 1024;
 
-var width = window.innerWidth
-  || document.documentElement.clientWidth
-  || document.body.clientWidth;
+    var radius = Math.min(width, height) / 2;
 
-var height = window.innerHeight
-  || document.documentElement.clientHeight
-  || document.body.clientHeight;
+    var tooltip = d3.select("body")
+      .append("div")
+      .attr("class", "tooltip")
+      .style("position", "absolute")
+      .style("z-index", "10")
+      .style("opacity", 0);
 
-height = 1024;
-width = 1024;
+    var x = d3.scale.linear()
+      .range([0, 2 * Math.PI]);
 
-var radius = Math.min(width, height) / 2;
+    var y = d3.scale.sqrt()
+      .range([0, radius]);
 
-var tooltip = d3.select("body")
-    .append("div")
-    .attr("class", "tooltip")
-    .style("position", "absolute")
-    .style("z-index", "10")
-    .style("opacity", 0);
+    var color = d3.scale.category20c();
 
-var x = d3.scale.linear()
-    .range([0, 2 * Math.PI]);
+    var svg = d3.select("body").append("svg")
+      .attr("width", width)
+      .attr("height", height)
+      .append("g")
+      .attr("transform", "translate(" + width / 2 + "," + (height / 2 + 10) + ")");
 
-var y = d3.scale.sqrt()
-    .range([0, radius]);
+    var partition = d3.layout.partition()
+      .sort(null)
+      .value(function(d) {
+        return d.hits;
+      });
 
-var color = d3.scale.category20c();
+    var arc = d3.svg.arc()
+      .startAngle(function(d) {
+        return Math.max(0, Math.min(2 * Math.PI, x(d.x)));
+      })
+      .endAngle(function(d) {
+        return Math.max(0, Math.min(2 * Math.PI, x(d.x + d.dx)));
+      })
+      .innerRadius(function(d) {
+        return Math.max(0, y(d.y));
+      })
+      .outerRadius(function(d) {
+        return Math.max(0, y(d.y + d.dy));
+      });
 
-var svg = d3.select("body").append("svg")
-    .attr("width", width)
-    .attr("height", height)
-  .append("g")
-    .attr("transform", "translate(" + width / 2 + "," + (height / 2 + 10) + ")");
+    // Keep track of the node that is currently being displayed as the root.
+    var node;
+    var root = d;
 
-var partition = d3.layout.partition()
-    .sort(null)
-    .value(function(d) { return d.hits; });
+    node = root;
+    var path = svg.selectAll("path").data(partition.nodes(root));
 
-var arc = d3.svg.arc()
-    .startAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, x(d.x))); })
-    .endAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, x(d.x + d.dx))); })
-    .innerRadius(function(d) { return Math.max(0, y(d.y)); })
-    .outerRadius(function(d) { return Math.max(0, y(d.y + d.dy)); });
-
-// Keep track of the node that is currently being displayed as the root.
-var node;
-
-
-
-  var root = {};
-  if (d.converted) {
-    root = d;
-  } else {
-    root = parsePerf('root', d.Data);
-  }
-
-  node = root;
-  var path = svg.datum(root).selectAll("path").data(partition.nodes);
-
-  path.enter().append("path")
+    path.enter().append("path")
       .attr("d", arc)
-      .style("fill", function(d) { return color((d.children ? d : d.parent).name); })
+      .style("fill", function(d) {
+        return color((d.children ? d : d.parent).name);
+      })
       .on("click", click)
       .on("mouseover", function(d) {
-        
+
         tooltip.html(function() {
-          return "<div class='name'>" + d.name + "</div><div class='details'><div class='hits'>" + d.hits + "</div><div class='time'>" + d.time +" ms</div><div class='avg'>"+ d.avg + " ms</div></div>";
+          return "<div class='name'>" + d.name + "</div><div class='details'><div class='hits'>" + d.hits + "</div><div class='time'>" + d.time + " ms</div><div class='avg'>" + d.avg + " ms</div></div>";
         });
         return tooltip.transition()
-            .duration(50)
-            .style("opacity", 0.9);
+          .duration(50)
+          .style("opacity", 0.9);
       })
-      //.on("mousemove", function(d) {
-      //  return tooltip
-      //    .style("top", (d3.event.pageY+10)+"px")
-      //    .style("left", (d3.event.pageX-100)+"px");
-      //})
-      .on("mouseout", function(){return tooltip.style("opacity", 0);})
-      .each(stash);
- 
-    path.exit().remove();
+      .on("mousemove", function(d) {
+        return tooltip
+          .style("top", (d3.event.pageY + 10) + "px")
+          .style("left", (d3.event.pageX + 10) + "px");
+      })
+      .on("mouseout", function() {
+        return tooltip.style("opacity", 0);
+      });
+    //.each(stash);
 
-    path
-        .data(partition.value(value).nodes)
-        .transition()
+
+    function click(d) {
+      node = d;
+      path.transition()
         .duration(1000)
-        .attrTween("d", arcTweenData);
+        .attrTween("d", arcTweenZoom(d));
+    }
 
+    d3.select(self.frameElement).style("height", height + "px");
 
-  function click(d) {
-    node = d;
-    path.transition()
-      .duration(1000)
-      .attrTween("d", arcTweenZoom(d));
+    // Setup for switching data: stash the old values for transition.
+    function stash(d) {
+      d.x0 = d.x;
+      d.dx0 = d.dx;
+    }
+
+    // When switching data: interpolate the arcs in data space.
+    function arcTweenData(a, i) {
+      var oi = d3.interpolate({
+        x: a.x0,
+        dx: a.dx0
+      }, a);
+
+      function tween(t) {
+        var b = oi(t);
+        a.x0 = b.x;
+        a.dx0 = b.dx;
+        return arc(b);
+      }
+      if (i == 0) {
+        // If we are on the first arc, adjust the x domain to match the root node
+        // at the current zoom level. (We only need to do this once.)
+        var xd = d3.interpolate(x.domain(), [node.x, node.x + node.dx]);
+        return function(t) {
+          x.domain(xd(t));
+          return tween(t);
+        };
+      } else {
+        return tween;
+      }
+    }
+
+    // When zooming: interpolate the scales.
+    function arcTweenZoom(d) {
+      var xd = d3.interpolate(x.domain(), [d.x, d.x + d.dx]),
+        yd = d3.interpolate(y.domain(), [d.y, 1]),
+        yr = d3.interpolate(y.range(), [d.y ? 20 : 0, radius]);
+      return function(d, i) {
+        return i ? function(t) {
+          return arc(d);
+        } : function(t) {
+          x.domain(xd(t));
+          y.domain(yd(t)).range(yr(t));
+          return arc(d);
+        };
+      };
+    }
   }
-
-
-
-d3.select(self.frameElement).style("height", height + "px");
-
-// Setup for switching data: stash the old values for transition.
-function stash(d) {
-  d.x0 = d.x;
-  d.dx0 = d.dx;
-}
-
-// When switching data: interpolate the arcs in data space.
-function arcTweenData(a, i) {
-  var oi = d3.interpolate({x: a.x0, dx: a.dx0}, a);
-  function tween(t) {
-    var b = oi(t);
-    a.x0 = b.x;
-    a.dx0 = b.dx;
-    return arc(b);
-  }
-  if (i == 0) {
-   // If we are on the first arc, adjust the x domain to match the root node
-   // at the current zoom level. (We only need to do this once.)
-    var xd = d3.interpolate(x.domain(), [node.x, node.x + node.dx]);
-    return function(t) {
-      x.domain(xd(t));
-      return tween(t);
-    };
-  } else {
-    return tween;
-  }
-}
-
-// When zooming: interpolate the scales.
-function arcTweenZoom(d) {
-  var xd = d3.interpolate(x.domain(), [d.x, d.x + d.dx]),
-      yd = d3.interpolate(y.domain(), [d.y, 1]),
-      yr = d3.interpolate(y.range(), [d.y ? 20 : 0, radius]);
-  return function(d, i) {
-    return i
-        ? function(t) { return arc(d); }
-        : function(t) { x.domain(xd(t)); y.domain(yd(t)).range(yr(t)); return arc(d); };
-  };
-}
-}
-
 </script>
+
 </html>
