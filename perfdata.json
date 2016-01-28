@@ -1,0 +1,661 @@
+{
+  "@@type": "Result",
+  "success": true,
+  "Error": {
+    "@@type": "Error"
+  },
+  "Data": {
+    "@@type": "PerformanceData",
+    "@totalms": 0,
+    "CreateModel": {
+      "@@type": "PerformanceData",
+      "@totalms": 103.392879,
+      "@hits": 1,
+      "@internalms": 103.17977800040626,
+      "associativeGetString": {
+        "@@type": "PerformanceData",
+        "@totalms": 0.213101,
+        "@hits": 18,
+        "@internalms": 0.213101
+      }
+    },
+    "@hits": 0,
+    "service": {
+      "@@type": "PerformanceData",
+      "auth": {
+        "@@type": "PerformanceData",
+        "@totalms": 105.213254,
+        "CreateModel": {
+          "@@type": "PerformanceData",
+          "@totalms": 43.922266,
+          "@hits": 1,
+          "@internalms": 43.84939699718094,
+          "associativeGetString": {
+            "@@type": "PerformanceData",
+            "@totalms": 0.072869,
+            "@hits": 13,
+            "@internalms": 0.072869
+          }
+        },
+        "@hits": 2,
+        "@internalms": 61.22292807226563,
+        "associativeGetString": {
+          "@@type": "PerformanceData",
+          "@totalms": 0.068062,
+          "@hits": 3,
+          "@internalms": 0.068062
+        }
+      },
+      "associativeFullSelect": {
+        "@@type": "PerformanceData",
+        "@totalms": 462.853677,
+        "@hits": 200061,
+        "@internalms": 458.482507909729,
+        "associativeFullSelect": {
+          "@@type": "PerformanceData",
+          "@totalms": 4.371169,
+          "@hits": 15672,
+          "@internalms": 4.371169
+        }
+      },
+      "error": {
+        "@@type": "PerformanceData",
+        "@totalms": 289.786084,
+        "@hits": 5222,
+        "@internalms": 267.1541259921875,
+        "associativeGetString": {
+          "@@type": "PerformanceData",
+          "@totalms": 22.631958,
+          "@hits": 10444,
+          "@internalms": 22.631958
+        }
+      },
+      "associativeGetString": {
+        "@@type": "PerformanceData",
+        "@totalms": 6997.662427,
+        "@hits": 7714847,
+        "@internalms": 6997.662427
+      },
+      "ContextFactory": {
+        "@@type": "PerformanceData",
+        "@totalms": 907.067127,
+        "@hits": 208886,
+        "@internalms": 907.067127
+      },
+      "mergeContexts": {
+        "@@type": "PerformanceData",
+        "@totalms": 0.20752,
+        "@hits": 4,
+        "@internalms": 0.20752
+      },
+      "@totalms": 940571.888567,
+      "CreateModel": {
+        "@@type": "PerformanceData",
+        "@totalms": 39559.804761,
+        "@hits": 203662,
+        "@internalms": 39559.782257000006,
+        "associativeGetString": {
+          "@@type": "PerformanceData",
+          "@totalms": 0.022504,
+          "@hits": 4,
+          "@internalms": 0.022504
+        }
+      },
+      "system": {
+        "@@type": "PerformanceData",
+        "@totalms": 13.814395,
+        "@hits": 1,
+        "@internalms": 13.814395
+      },
+      "@hits": 203664,
+      "@internalms": 201576.63856700005,
+      "genericlists": {
+        "@@type": "PerformanceData",
+        "genericListDataFromDefinitionNoHeader": {
+          "@@type": "PerformanceData",
+          "@totalms": 548898.528169,
+          "@hits": 99218,
+          "@internalms": 1476.9656690000556,
+          "parseColumns": {
+            "@@type": "PerformanceData",
+            "@totalms": 1843.556441,
+            "@hits": 93996,
+            "@internalms": 1843.556441
+          },
+          "getEntitiesFromHint": {
+            "@@type": "PerformanceData",
+            "@totalms": 99523.869705,
+            "@hits": 99218,
+            "@internalms": 14303.619705000005,
+            "getEntitiesFromModel": {
+              "@@type": "PerformanceData",
+              "@totalms": 82949.992486,
+              "@hits": 93996,
+              "@internalms": 53771.6096735,
+              "unfrozenCopy": {
+                "@@type": "PerformanceData",
+                "@totalms": 21893.750279,
+                "@hits": 2694806,
+                "@internalms": 19430.085972359375,
+                "unfrozenCopy": {
+                  "@@type": "PerformanceData",
+                  "@totalms": 2463.664217,
+                  "@hits": 5859742,
+                  "@internalms": 2463.664217
+                }
+              },
+              "associativeGetString": {
+                "@@type": "PerformanceData",
+                "@totalms": 7284.633702,
+                "@hits": 48697545,
+                "@internalms": 7284.633702
+              }
+            },
+            "associativeFullSelect": {
+              "@@type": "PerformanceData",
+              "@totalms": 1684.653343,
+              "@hits": 1780702,
+              "@internalms": 1648.255367078369,
+              "associativeFullSelect": {
+                "@@type": "PerformanceData",
+                "@totalms": 36.397976,
+                "@hits": 151438,
+                "@internalms": 36.397976
+              }
+            },
+            "associativeGetString": {
+              "@@type": "PerformanceData",
+              "@totalms": 159.769644,
+              "@hits": 308098,
+              "@internalms": 159.769644
+            },
+            "getEntityByOID": {
+              "@@type": "PerformanceData",
+              "@totalms": 425.828031,
+              "@hits": 20888,
+              "@internalms": 161.56231444726563,
+              "unfrozenCopy": {
+                "@@type": "PerformanceData",
+                "@totalms": 254.003475,
+                "@hits": 20888,
+                "@internalms": 229.5014627471924,
+                "unfrozenCopy": {
+                  "@@type": "PerformanceData",
+                  "@totalms": 24.502013,
+                  "@hits": 36554,
+                  "@internalms": 24.502013
+                }
+              },
+              "associativeGetString": {
+                "@@type": "PerformanceData",
+                "@totalms": 10.262247,
+                "@hits": 20921,
+                "@internalms": 10.262247
+              }
+            }
+          },
+          "getRows": {
+            "@@type": "PerformanceData",
+            "init": {
+              "@@type": "PerformanceData",
+              "@totalms": 2828.481443,
+              "@hits": 93996,
+              "@internalms": 1751.3502174140626,
+              "getECsFromColumns": {
+                "@@type": "PerformanceData",
+                "@totalms": 1077.131282,
+                "@hits": 93996,
+                "@internalms": 803.41497340625,
+                "associativeGetString": {
+                  "@@type": "PerformanceData",
+                  "@totalms": 273.7163,
+                  "@hits": 1462160,
+                  "@internalms": 273.7163
+                }
+              }
+            },
+            "processAndFetch": {
+              "@@type": "PerformanceData",
+              "@totalms": 12679.596468,
+              "columnInstructions": {
+                "@@type": "PerformanceData",
+                "@totalms": 9886.090257,
+                "@hits": 731080,
+                "@internalms": 4387.24797184375,
+                "associativeFullSelect": {
+                  "@@type": "PerformanceData",
+                  "@totalms": 5495.003657,
+                  "@hits": 14590268,
+                  "@internalms": 4403.140253679688,
+                  "associativeFullSelect": {
+                    "@@type": "PerformanceData",
+                    "@totalms": 1091.863378,
+                    "@hits": 6031410,
+                    "@internalms": 1091.863378
+                  }
+                },
+                "associativeGetString": {
+                  "@@type": "PerformanceData",
+                  "@totalms": 3.838692,
+                  "@hits": 5222,
+                  "@internalms": 3.838692
+                }
+              },
+              "@hits": 93996,
+              "@internalms": 2583.5954914374997,
+              "associativeGetString": {
+                "@@type": "PerformanceData",
+                "@totalms": 0.054582,
+                "@hits": 36,
+                "@internalms": 0.054582
+              },
+              "loadPaths": {
+                "@@type": "PerformanceData",
+                "@totalms": 209.856508,
+                "@hits": 83552,
+                "@internalms": 209.856508
+              }
+            },
+            "@totalms": 445966.462514,
+            "@hits": 93996,
+            "produceRowData": {
+              "@@type": "PerformanceData",
+              "mergeContexts": {
+                "@@type": "PerformanceData",
+                "mergeContexts": {
+                  "@@type": "PerformanceData",
+                  "@totalms": 74034.611741,
+                  "@hits": 14590268,
+                  "@internalms": 74034.611741
+                },
+                "@totalms": 76814.965075,
+                "@hits": 14590268,
+                "@internalms": 2780.3557
+              },
+              "@totalms": 248575.088843,
+              "@hits": 93996,
+              "@internalms": 34622.401343000005,
+              "selectPivotEntity": {
+                "@@type": "PerformanceData",
+                "@totalms": 15415.111825,
+                "@hits": 14590268,
+                "@internalms": 5974.4174890625,
+                "associativeFullSelect": {
+                  "@@type": "PerformanceData",
+                  "@totalms": 9440.694424,
+                  "@hits": 14590268,
+                  "@internalms": 8165.475918140624,
+                  "associativeFullSelect": {
+                    "@@type": "PerformanceData",
+                    "@totalms": 1275.218545,
+                    "@hits": 6031410,
+                    "@internalms": 1275.218545
+                  }
+                }
+              },
+              "associativeGetString": {
+                "@@type": "PerformanceData",
+                "@totalms": 20159.181153,
+                "@hits": 32240628,
+                "@internalms": 20159.181153
+              },
+              "findKeys": {
+                "@@type": "PerformanceData",
+                "@totalms": 13017.230812,
+                "@hits": 14590268,
+                "@internalms": 11821.49497215625,
+                "associativeGetString": {
+                  "@@type": "PerformanceData",
+                  "@totalms": 1195.735784,
+                  "@hits": 7154140,
+                  "@internalms": 1195.735784
+                }
+              },
+              "produceRow": {
+                "@@type": "PerformanceData",
+                "@totalms": 88546.19368,
+                "@hits": 14590268,
+                "@internalms": 49929.48664875,
+                "associativeFullSelect": {
+                  "@@type": "PerformanceData",
+                  "@totalms": 8188.716948,
+                  "@hits": 2329012,
+                  "@internalms": 4998.08804175,
+                  "associativeFullSelect": {
+                    "@@type": "PerformanceData",
+                    "@totalms": 3190.62885,
+                    "@hits": 5519654,
+                    "@internalms": 3190.62885
+                  }
+                },
+                "associativeGetString": {
+                  "@@type": "PerformanceData",
+                  "@totalms": 30427.989937,
+                  "@hits": 57415890,
+                  "@internalms": 30427.989937
+                }
+              }
+            },
+            "@internalms": 15949.368764000013,
+            "loaddata": {
+              "@@type": "PerformanceData",
+              "@totalms": 163459.204174,
+              "@hits": 93996,
+              "@internalms": 126621.46589275001,
+              "unfrozenCopy": {
+                "@@type": "PerformanceData",
+                "@totalms": 29083.461989,
+                "@hits": 3561404,
+                "@internalms": 26784.81892259375,
+                "unfrozenCopy": {
+                  "@@type": "PerformanceData",
+                  "@totalms": 2298.643015,
+                  "@hits": 5284664,
+                  "@internalms": 2298.643015
+                }
+              },
+              "associativeGetString": {
+                "@@type": "PerformanceData",
+                "@totalms": 7754.275063,
+                "@hits": 38969088,
+                "@internalms": 7754.275063
+              }
+            },
+            "associativeGetString": {
+              "@@type": "PerformanceData",
+              "@totalms": 2474.729102,
+              "@hits": 12658128,
+              "@internalms": 2474.729102
+            }
+          },
+          "associativeGetString": {
+            "@@type": "PerformanceData",
+            "@totalms": 87.675178,
+            "@hits": 187992,
+            "@internalms": 87.675178
+          }
+        },
+        "@totalms": 664253.183654,
+        "@hits": 189612,
+        "@internalms": 57308.87115400005,
+        "associativeFullSelect": {
+          "@@type": "PerformanceData",
+          "@totalms": 9249.391137,
+          "@hits": 5095872,
+          "@internalms": 6559.7356194218755,
+          "associativeFullSelect": {
+            "@@type": "PerformanceData",
+            "@totalms": 2689.655524,
+            "@hits": 5209784,
+            "@internalms": 2118.39819978125,
+            "associativeFullSelect": {
+              "@@type": "PerformanceData",
+              "@totalms": 571.257309,
+              "@hits": 1199854,
+              "@internalms": 552.86517719458,
+              "associativeFullSelect": {
+                "@@type": "PerformanceData",
+                "@totalms": 18.392132,
+                "@hits": 15666,
+                "@internalms": 18.392132
+              }
+            }
+          }
+        },
+        "unfrozenCopy": {
+          "@@type": "PerformanceData",
+          "@totalms": 46059.297976,
+          "@hits": 590326,
+          "@internalms": 1986.2823510000017,
+          "unfrozenCopy": {
+            "@@type": "PerformanceData",
+            "@totalms": 44073.015973,
+            "@hits": 1683902,
+            "@internalms": 2341.0706605000014,
+            "unfrozenCopy": {
+              "@@type": "PerformanceData",
+              "@totalms": 41731.945846,
+              "@hits": 3167814,
+              "@internalms": 5571.367721000002,
+              "unfrozenCopy": {
+                "@@type": "PerformanceData",
+                "@totalms": 36160.577066,
+                "@hits": 5933634,
+                "@internalms": 7681.868081624998,
+                "unfrozenCopy": {
+                  "@@type": "PerformanceData",
+                  "@totalms": 28478.708731,
+                  "@hits": 21944250,
+                  "@internalms": 8417.743887249999,
+                  "unfrozenCopy": {
+                    "@@type": "PerformanceData",
+                    "@totalms": 20060.965549,
+                    "@hits": 20945416,
+                    "@internalms": 12887.39181853125,
+                    "unfrozenCopy": {
+                      "@@type": "PerformanceData",
+                      "@totalms": 7173.573837,
+                      "@hits": 17485848,
+                      "@internalms": 6296.004806238281,
+                      "unfrozenCopy": {
+                        "@@type": "PerformanceData",
+                        "@totalms": 877.56904,
+                        "@hits": 1203328,
+                        "@internalms": 877.56904
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "associativeGetString": {
+          "@@type": "PerformanceData",
+          "@totalms": 2737.154058,
+          "@hits": 12425313,
+          "@internalms": 2737.154058
+        }
+      },
+      "unfrozenCopy": {
+        "@@type": "PerformanceData",
+        "@totalms": 3264.301994,
+        "@hits": 203670,
+        "@internalms": 2923.947257671875,
+        "unfrozenCopy": {
+          "@@type": "PerformanceData",
+          "@totalms": 340.354735,
+          "@hits": 611026,
+          "@internalms": 338.3841520379639,
+          "unfrozenCopy": {
+            "@@type": "PerformanceData",
+            "@totalms": 1.970583,
+            "@hits": 147,
+            "@internalms": 0.6451110027389526,
+            "unfrozenCopy": {
+              "@@type": "PerformanceData",
+              "@totalms": 1.325472,
+              "@hits": 430,
+              "@internalms": 0.5677909878463745,
+              "unfrozenCopy": {
+                "@@type": "PerformanceData",
+                "@totalms": 0.757681,
+                "@hits": 396,
+                "@internalms": 0.5236949948129654,
+                "unfrozenCopy": {
+                  "@@type": "PerformanceData",
+                  "@totalms": 0.233986,
+                  "@hits": 146,
+                  "@internalms": 0.2020679995701313,
+                  "unfrozenCopy": {
+                    "@@type": "PerformanceData",
+                    "@totalms": 0.031918,
+                    "@hits": 30,
+                    "@internalms": 0.031918
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "config": {
+        "@@type": "PerformanceData",
+        "@totalms": 23141.27033,
+        "@hits": 5223,
+        "@internalms": 12678.90704875,
+        "associativeFullSelect": {
+          "@@type": "PerformanceData",
+          "@totalms": 7160.86973,
+          "@hits": 5071533,
+          "@internalms": 4434.13291359375,
+          "associativeFullSelect": {
+            "@@type": "PerformanceData",
+            "@totalms": 2726.736785,
+            "@hits": 3306159,
+            "@internalms": 1955.5816336328126,
+            "associativeFullSelect": {
+              "@@type": "PerformanceData",
+              "@totalms": 771.155141,
+              "@hits": 1107276,
+              "@internalms": 755.7566500942382,
+              "associativeFullSelect": {
+                "@@type": "PerformanceData",
+                "@totalms": 15.398491,
+                "@hits": 15669,
+                "@internalms": 15.398491
+              }
+            }
+          }
+        },
+        "unfrozenCopy": {
+          "@@type": "PerformanceData",
+          "@totalms": 2967.059422,
+          "@hits": 219373,
+          "@internalms": 908.9637188749998,
+          "unfrozenCopy": {
+            "@@type": "PerformanceData",
+            "@totalms": 2058.095619,
+            "@hits": 141030,
+            "@internalms": 110.75894907812517,
+            "unfrozenCopy": {
+              "@@type": "PerformanceData",
+              "@totalms": 1947.336632,
+              "@hits": 109685,
+              "@internalms": 272.498497234375,
+              "unfrozenCopy": {
+                "@@type": "PerformanceData",
+                "@totalms": 1674.838134,
+                "@hits": 235041,
+                "@internalms": 383.8840324375001,
+                "unfrozenCopy": {
+                  "@@type": "PerformanceData",
+                  "@totalms": 1290.954065,
+                  "@hits": 882690,
+                  "@internalms": 389.8837524999999,
+                  "unfrozenCopy": {
+                    "@@type": "PerformanceData",
+                    "@totalms": 901.070293,
+                    "@hits": 835680,
+                    "@internalms": 579.8179126289062,
+                    "unfrozenCopy": {
+                      "@@type": "PerformanceData",
+                      "@totalms": 321.252375,
+                      "@hits": 715551,
+                      "@internalms": 287.70055233764646,
+                      "unfrozenCopy": {
+                        "@@type": "PerformanceData",
+                        "@totalms": 33.551821,
+                        "@hits": 41784,
+                        "@internalms": 33.551821
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "associativeGetString": {
+          "@@type": "PerformanceData",
+          "@totalms": 334.434175,
+          "@hits": 1389681,
+          "@internalms": 334.434175
+        }
+      }
+    },
+    "@internalms": -940745.5625,
+    "associativeFullSelect": {
+      "@@type": "PerformanceData",
+      "@totalms": 31.022979,
+      "@hits": 92,
+      "@internalms": 30.228331008342742,
+      "associativeFullSelect": {
+        "@@type": "PerformanceData",
+        "@totalms": 0.794648,
+        "@hits": 90,
+        "@internalms": 0.6333749973754883,
+        "associativeFullSelect": {
+          "@@type": "PerformanceData",
+          "@totalms": 0.161273,
+          "@hits": 79,
+          "@internalms": 0.161273
+        }
+      }
+    },
+    "unfrozenCopy": {
+      "@@type": "PerformanceData",
+      "@totalms": 26.029893,
+      "@hits": 6,
+      "@internalms": 0.1584349464111341,
+      "unfrozenCopy": {
+        "@@type": "PerformanceData",
+        "@totalms": 25.871458,
+        "@hits": 16,
+        "@internalms": 0.2877482832031255,
+        "unfrozenCopy": {
+          "@@type": "PerformanceData",
+          "@totalms": 25.583709,
+          "@hits": 198,
+          "@internalms": 1.8152420505371083,
+          "unfrozenCopy": {
+            "@@type": "PerformanceData",
+            "@totalms": 23.768466,
+            "@hits": 1616,
+            "@internalms": 8.744095806518555,
+            "unfrozenCopy": {
+              "@@type": "PerformanceData",
+              "@totalms": 15.02437,
+              "@hits": 4736,
+              "@internalms": 11.168769881362914,
+              "unfrozenCopy": {
+                "@@type": "PerformanceData",
+                "@totalms": 3.8556,
+                "@hits": 4790,
+                "@internalms": 3.6385860001802444,
+                "unfrozenCopy": {
+                  "@@type": "PerformanceData",
+                  "@totalms": 0.217014,
+                  "@hits": 146,
+                  "@internalms": 0.19420699979507924,
+                  "unfrozenCopy": {
+                    "@@type": "PerformanceData",
+                    "@totalms": 0.022807,
+                    "@hits": 30,
+                    "@internalms": 0.022807
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "associativeGetString": {
+      "@@type": "PerformanceData",
+      "@totalms": 13.229887,
+      "@hits": 5911,
+      "@internalms": 13.229887
+    }
+  }
+}
