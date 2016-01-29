@@ -2,7 +2,7 @@
 
 ![Stardust](stardust.png)
 
-Stardust is hack consisting of a [D3 sunburst visualization](http://bl.ocks.org/mbostock/4348373) and a little dirty parser for Java thread dumps. 
+Stardust is a hack consisting of a [D3 sunburst visualization](http://bl.ocks.org/mbostock/4348373) and a little dirty parser for Java thread dumps. 
 
 ## How to use
 
