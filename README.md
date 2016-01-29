@@ -6,6 +6,6 @@ Stardust is hack consisting of a [D3 sunburst visualization](http://bl.ocks.org/
 
 ## How to use
 
-Everything is contained in the `index.html` file so you just load that on a webserver and view the page in your browser - Chrome is preferred. You can also try it out at [TODO](http://url-goes-here). 
+Everything is contained in the `index.html` file so you just load that on a webserver and view the page in your browser - Chrome is preferred. You can also try it out at [here](http://cetrea.github.io/stardust/). 
 
 Once the page is loaded find one or more thread dumps - generated via `jstack <pid> > threads.log` - and drag the files onto page. No files will be uploaded as the parsing and rendering happens on the page itself.
