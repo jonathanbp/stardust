@@ -31,9 +31,9 @@
 </head>
 
 <body>
-  <div class="droptarget" style="position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px;">
-    <div style="display:flex;justify-content:center;align-items:center;width:100%;height:100%;">
-      <div style="width:100px;height:100px;font-size:7em;">🕳</div>
+  <div style="position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px;">
+    <div id="centered" style="display:flex;justify-content:center;align-items:center;width:100%;height:100%;">
+      <div class="droptarget" style="width:100px;height:100px;font-size:7em;">🕳</div>
     </div>
   </div>
 
@@ -164,7 +164,7 @@
 
     var color = d3.scale.category20c();
 
-    var svg = d3.select("body").append("svg")
+    var svg = d3.select("#centered").append("svg")
       .attr("width", width)
       .attr("height", height)
       .append("g")
